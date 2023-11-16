@@ -1,0 +1,34 @@
+#Em Python, você pode implementar um algoritmo de árvore de decisão usando a biblioteca scikit-learn. Scikit-learn oferece uma implementação eficiente e fácil de usar para várias técnicas de aprendizado de máquina, incluindo árvores de decisão.
+#Aqui está um exemplo simples de como usar a árvore de decisão em scikit-learn:
+#Certifique-se de ter a biblioteca scikit-learn instalada. Você pode instalá-la usando o seguinte comando:
+
+pip install scikit-learn
+
+#Aqui está um exemplo básico de um classificador de árvore de decisão usando scikit-learn:
+
+from sklearn import tree
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import accuracy_score
+
+# Exemplo de dados
+# Substitua isso pelos seus dados reais
+X = [[0, 0], [1, 1]]
+y = [0, 1]
+
+# Dividindo os dados em conjuntos de treinamento e teste
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+# Criando um classificador de árvore de decisão
+clf = tree.DecisionTreeClassifier()
+
+# Treinando o classificador
+clf.fit(X_train, y_train)
+
+# Fazendo previsões no conjunto de teste
+predictions = clf.predict(X_test)
+
+# Calculando a precisão
+accuracy = accuracy_score(y_test, predictions)
+print("Precisão:", accuracy)
+
+
