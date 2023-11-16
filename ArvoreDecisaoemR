@@ -1,0 +1,42 @@
+#Em R, você pode usar a biblioteca rpart para implementar algoritmos de árvore de decisão. Aqui está um exemplo simples usando o conjunto de dados iris:
+
+R
+
+# Instalar e carregar a biblioteca rpart
+install.packages("rpart")
+library(rpart)
+
+# Carregar conjunto de dados de exemplo (Iris dataset)
+data(iris)
+
+# Dividir os dados em conjuntos de treinamento e teste
+set.seed(42)
+index <- sample(1:nrow(iris), nrow(iris) * 0.8)
+train_data <- iris[index, ]
+test_data <- iris[-index, ]
+
+# Criar um modelo de árvore de decisão
+tree_model <- rpart(Species ~ ., data = train_data, method = "class")
+
+# Visualizar a árvore (opcional)
+plot(tree_model)
+text(tree_model, cex = 0.8)
+
+# Fazer previsões no conjunto de teste
+predictions <- predict(tree_model, newdata = test_data, type = "class")
+
+# Calcular a precisão
+accuracy <- sum(predictions == test_data$Species) / nrow(test_data)
+print(paste("Precisão:", accuracy))
+
+
+#Neste exemplo:
+
+#Instalamos e carregamos a biblioteca rpart.
+#Carregamos o conjunto de dados Iris.
+#Dividimos os dados em conjuntos de treinamento e teste.
+#Criamos um modelo de árvore de decisão usando a função rpart.
+#Opcionalmente, visualizamos a árvore usando plot e text.
+#Fazemos previsões no conjunto de teste usando predict.
+#Calculamos a precisão comparando as previsões com as classes reais.
+#Certifique-se de adaptar este exemplo ao seu conjunto de dados específico e requisitos. A biblioteca rpart oferece muitos parâmetros que você pode ajustar para personalizar o comportamento da árvore de decisão.
